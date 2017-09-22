@@ -1,0 +1,93 @@
+html, body
+{
+  background-color: black;
+  color: orange;
+}
+
+table
+{
+  border-style: solid;
+  border-color: orange;
+}
+
+fixed-bottom
+{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top-style: solid;
+  border-color: orange;
+}
+
+message-title
+{
+  color: blue;
+  font-size: 30px;
+  width: 100%;
+}
+
+message-wrap
+{
+  border-style: solid;
+  border-color: orange;
+  margin-top: -10px;
+  width: 90%;
+}
+
+currencies-overview .panel-body
+{
+  max-height: calc(100% - 350px);
+  overflow: scroll;
+}
+
+div.panel { border-style: none; }
+div.panel > div.panel-heading {
+  background-color: orange;
+  border-style: none;
+  color: white;
+}
+
+div.panel-body
+{
+  background-color: black;
+}
+
+buy-price {color: green;}
+sell-price {color: red;}
+symbol {color: white};
+
+.list-group-item
+{
+  height: auto;
+}
+
+news-display .panel-body
+{
+  height: 360px;
+  overflow: scroll;
+}
+
+article-title {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: orange !important;
+}
+
+green-alert
+{
+  background-color: green;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+red-alert
+{
+  background-color: red;
+  color: white;
+  width: 100%;
+  height: 100%;
+}

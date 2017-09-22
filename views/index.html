@@ -1,0 +1,176 @@
+<script src='../lib/index.js'></script>
+<script>
+  helpers.header.get_header_helper();
+</script>
+
+<body ng-controller='dashboard'>
+
+  <!-- The sources panel -->
+    <div class='col-md-8' ng-controller='data-sources'>
+      <div class='panel panel-default'>
+        <div class='panel-heading'>
+         DATA SOURCE STATUS
+        </div>
+        <div class='panel-body'>
+          <div class='row'>
+            <table class='table table-default table-stripped'>
+              <th>
+                SOURCE
+              </th>
+              <th>
+                STATUS
+              </th>
+              <th>
+                ROLE
+              </th>
+              <tr ng-repeat='source in sources'>
+                <td style='color: white;'>
+                  <b>{{source.title}}</b>
+                </td>
+                <td>
+                  <block ng-if='source.alive'>
+                    <green-alert>
+                      Active
+                    </green-alert>
+                  </block>
+
+                  <block ng-if='!source.alive'>
+                    <red-alert>
+                      Inactive
+                    </red-alert>
+                  </block>
+                </td>
+                <td>{{source.role}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-md-4' ng-controller='environment'>
+      <div class='panel panel-default'>
+        <div class='panel-heading'>
+          YOUR ENVIRONMENT
+        </div>
+        <div class='panel-body'>
+          <div class='row'>
+            <table class='table table-default'>
+              <tr>
+                <td>
+                  <b>Current Time</b>
+                </td>
+                <td style='color: white;'>{{current_time}}</td>
+              <tr>
+              <tr>
+                <td>
+                  <b>Current Date</b>
+                </td>
+                <td style='color: white;'>{{current_date}}</td>
+              <tr>
+              <tr>
+                <td>
+                  <b>Market Status (UK)</b>
+                </td>
+                <td>
+                  <block ng-if='market_status'>
+                    <green-alert>Open</green-alert>
+                  </block>
+                  <block ng-if='!market_status'>
+                    <red-alert>Closed</red-alert>
+                  </block>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- The pinned item -->
+  <div class='col-md-6'>
+    <!-- Pinned Stock table -->
+    <div class='panel panel-default'>
+      <div class='panel-heading'>
+        PINNED STOCK - APPLE (HISTORICAL)
+      </div>
+      <div class='panel-body'>
+        <div class='row'>
+          <div id="container" style="height: 400px; min-width: 310px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- News display box -->
+    <news-display ng-controller='dashboard-news'>
+      <div class='panel panel-default'>
+        <div class='panel-heading'>
+          NEWS HEADLINES
+        </div>
+        <div class='panel-body'>
+          <div class='row'>
+            <table class='table table-news-display'>
+              <tr ng-repeat='article in articles'>
+                <td>
+                    <img ng-src='{{article.urlToImage}}' height='100px;'>
+                </td>
+                <td>
+                  <article-title>
+                    <b>{{article.title}}</b>
+                  </article-title>
+                  <br>
+                  <article-description>
+                    {{article.description}}
+                  </article-description>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </news-display>
+  </div>
+
+  <!-- Stocks Overview -->
+  <currencies-overview class='col-md-6' ng-controller='currencies-overview'>
+    <div class='panel panel-default'>
+      <div class='panel-heading'>
+        USD LIVE OVERVIEW
+      </div>
+      <div class='panel-body'>
+        <div class='row'>
+          <table class='table table-default'>
+            <th>STOCK TITLE</th>
+            <th>PRICE</th>
+            <th>SYMBOL</th>
+            <th>TYPE</th>
+
+            <tr ng-repeat='currency in currencies'>
+              <td>
+                <b>{{currency.name}}</b>
+              </td>
+              <td>
+                <buy-price>{{currency.price}}</buy-price>
+                </td>
+              <td>
+                <symbol>{{currency.symbol}}<symbol>
+                </td>
+              <td>{{currency.type}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </currencies-overview>
+
+  <!-- The messages panel on footer of page -->
+  <message-wrap class='col-md-12'>
+    <message-title>TRADING NEWS PANEL - <span style='font-size: 20px; color: white;'>By James Gibbons</span></message-title>
+    <br>
+    <message-body>
+      Open trading news is an enterprise application written by James Gibbons of Bespoke Computer Software.
+      Please note that all the data provided on this platform is provided by external sources.
+    </message-body>
+  </message-wrap>
+
+</body>
