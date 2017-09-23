@@ -10,6 +10,13 @@ table
   border-color: orange;
 }
 
+.form-control
+{
+  background-color: black;
+  border-style: solid;
+  color: orange;
+}
+
 fixed-bottom
 {
   position: absolute;
@@ -33,6 +40,16 @@ message-wrap
   border-color: orange;
   margin-top: -10px;
   width: 90%;
+}
+
+command-bar {
+  width: 100%;
+  position: absolute;
+  bottom: 75px;
+  left: 0;
+  z-index: 9999;
+  background-color: black;
+
 }
 
 currencies-overview .panel-body

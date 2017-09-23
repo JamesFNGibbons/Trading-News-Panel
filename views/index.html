@@ -165,12 +165,47 @@
 
   <!-- The messages panel on footer of page -->
   <message-wrap class='col-md-12'>
-    <message-title>TRADING NEWS PANEL - <span style='font-size: 20px; color: white;'>By James Gibbons</span></message-title>
-    <br>
-    <message-body>
-      Open trading news is an enterprise application written by James Gibbons of Bespoke Computer Software.
-      Please note that all the data provided on this platform is provided by external sources.
-    </message-body>
-  </message-wrap>
-
+    <block>
+      <message-title>TRADING NEWS PANEL - <span style='font-size: 20px; color: white;'>By James Gibbons</span></message-title>
+        <br>
+        <message-body>
+          Open trading news is an enterprise application written by James Gibbons of Bespoke Computer Software.
+          Please note that all the data provided on this platform is provided by external sources.
+        </message-body>
+      </block>
+    </message-wrap>
+    <div ng-controller='command-input'>
+      <!-- The command input bar -->
+      <command-bar ng-if='!cmd_response && display_cmd_input'>
+        <div class='form-group'>
+          <h3>
+            <red-alert ng-if='cmd_exist_error'>
+              Command does not exist. Please try again.
+            </red-alert>
+            <block ng-if='!cmd_exist_error'>
+              Enter shortcut command below
+              <span style='color: white; font-size: 17px;'>
+                Or press F1 to hide
+              </span>
+            </block>
+            <div class='row'>
+              <div class='col-md-11'>
+                <input type='text' class='form-control' ng-model='command' class='form-control'>
+              </div>
+              <div class='col-md-1'>
+                <button class='btn btn-primary form-control' ng-click='run_command(command)'>
+                  GO
+                </button>
+              </div>
+            </div>
+          </h3>
+        </div>
+      </command-bar>
+      <command-bar class='response' ng-if='cmd_response'>
+        <h3>
+          Your Command has been executed. <br>
+          <green-alert>{{cmd_response}}</green-alert>
+        </h3>
+      </command-bar>
+    </div>
 </body>
